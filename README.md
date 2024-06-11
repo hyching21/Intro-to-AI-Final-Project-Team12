@@ -50,32 +50,14 @@ Output : 蘋果肉桂一份竟然$204！
 ### 5. UI
 我們利用flask開發了一個網站，串接上述的模型，使用者可以輸入一段文字，網站將以換行做為每句話的分隔，為每句話加入適當的表情符號。
 ## Results
-### 1. 翻譯Baseline的dataset，測試中文是否能成功
-我們先採用baseline所使用的twiter datasets，取3000筆進行train，並利用google sheet的”=GOOGLETRANSLATE(A2,"en","zh-TW")“ 函式將原先英文的資料翻譯成中文。
-#### LSTM 訓練結果，accuracy為0.9252
-#### BLSTM 訓練結果，accuracy為0.9357
-#### 20種emojis的數據（precision, recall, f1-score, and total accuracy）
-#### 手動輸入一些測資，跑出的對應表情符號也確實有正確符合語意。
-### 2. 初步爬蟲測試 (發現太多留言重複會影響結果，像是綠色愛心、台灣加油)
-經過翻譯樣本測試後，我們確定中文版本是可執行的。而我們發現翻譯的樣本常會有翻譯錯誤的現象，不符合中文語法，且對應的20種emoji也並不符合我們想要的真實數據，因此我們決定選用更貼近中文使用表情符號狀況的Instagram貼文及留言當作dataset。
-利用python套件"instaloader”進行爬蟲，將該帳號前10篇貼文的內容與留言全部擷取。結果可以達到約7成的accuracy，但我們發現選取全部留言的dataset，會使得有太多重複的內容，例如"台灣加油"配上綠色愛心，而這會影響到最終的預測結果。
-### 3. 第一次採用的dataset (某些帳號的資料筆數較多，像是賴清德、周杰倫)
-根據上面的測試確定爬蟲及其擷取的資料有一定的可行性。我們接著蒐集更多樣化的Instagram帳號資料，並且限制了每次爬取貼文的留言數量，避免過多重複資料。
-#### LSTM，accuracy為0.7028
-#### BLSTM，accuracy為0.7263
-#### 每個emoji各自的precision、recall和f1-score
-
-經過訓練後，我們發現BLSTM會有較高的accuracy，因此在最後版本我們以BLSTM的方法去訓練model。
-但我們發現，因為部分帳號經過篩選是否有emoji的資料後，所保留的資料集數較多，導致我們訓練資料的來源會不平均，因此最終我們改以在爬蟲時就篩選出包含emoji的資料，讓每個帳號的資料數量是固定一樣的。
-### 4. 最後採用的dataset
 最後的dataset是固定每個帳號所爬到含有emoji的資料數量。我們分別篩選出前20、30及40個常用的emoji的那些數據資料，並訓練了能夠predict出20、30和40的emoji的model。
-#### a. top 20 emojis
-##### 訓練結果，accuracy為0.8039
-##### 每個emoji各自的precision、recall和f1-score
-#### b. top 30 emojis
-##### 訓練結果，accuracy為0.8322
-##### 每個emoji各自的precision、recall和f1-score
-#### c. top 40 emojis
-##### 訓練結果，accuracy為0.8438
-##### 每個emoji各自的precision、recall和f1-score
+### 1. top 20 emojis
+#### 訓練結果，accuracy為0.8039
+#### 每個emoji各自的precision、recall和f1-score
+### 2. top 30 emojis
+#### 訓練結果，accuracy為0.8322
+#### 每個emoji各自的precision、recall和f1-score
+### 3. top 40 emojis
+#### 訓練結果，accuracy為0.8438
+#### 每個emoji各自的precision、recall和f1-score
 
