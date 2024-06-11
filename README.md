@@ -52,6 +52,7 @@ Output : 蘋果肉桂一份竟然$204！
 ## Results
 最後的dataset是固定每個帳號所爬到含有emoji的資料數量。我們分別篩選出前20、30及40個常用的emoji的那些數據資料，並訓練了能夠predict出20、30和40的emoji的model。
 ### 1. top 20 emojis
+![](https://github.com/hyching21/Intro-to-AI-Final-Project-Team12/blob/master/top_20_emojis.png)
 訓練結果，accuracy為0.8039
 ### 2. top 30 emojis
 訓練結果，accuracy為0.8322
