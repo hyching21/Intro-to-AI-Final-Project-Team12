@@ -50,3 +50,7 @@ Output : 蘋果肉桂一份竟然$204！
 ### 5. UI
 我們利用flask開發了一個網站，串接上述的模型，使用者可以輸入一段文字，網站將以換行做為每句話的分隔，為每句話加入適當的表情符號。
 ## Results
+### 1. 翻譯Baseline的dataset，測試中文是否能成功
+#### LSTM 訓練結果，accuracy為0.9252
+#### BLSTM 訓練結果，accuracy為0.9357
+#### 20種emojis的數據（precision, recall, f1-score, and total accuracy）
