@@ -5,9 +5,9 @@ import csv
 # 建立 Instaloader 物件
 L = instaloader.Instaloader()
 
-username = 'joykuojoykuo' # 登入IG帳戶
-password = 'joykuo0108' # 登入IG帳戶
-target_user = 'dcard.tw' # 設定目標用戶
+username = '' # 登入IG帳戶
+password = '' # 登入IG帳戶
+target_user = '' # 設定目標用戶
 
 data_limit = 10 # 設定資料數量上限
 comment_limit = 20 # 設定每篇貼文的留言數量上限
